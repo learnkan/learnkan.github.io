@@ -1,0 +1,29 @@
+<!doctype html>
+<style>@import url(api.css); :root {--font: rubik, 'ballo 2', 'baloo da 2', serif; --text-case-filter: capitalize;} button {font-size: inherit !important}</style>
+<div style="position: fixed; top: 0; left: 0; height: 100vh; width: 100%; background: #fff; display: flex; justify-content: center; align-items: center;">
+	<h1 id="text" style="font-weight: 400; font-size: 10vh; text-align: center;"><span style="font-weight: 600">KanLearn</span></h1>
+	<p style="position: fixed; bottom: 30%; font-size: 3vh; text-align: center" id="words"><span style="font-weight: 600">learning kannada made fun!</span></p>
+	<div style="position: fixed; bottom: 20%; font-size: 2.5vh;">
+	<button onclick="ok()" id="btn">start</button>
+	</div>
+</div>
+
+<script>
+	var letters = ['ಅ - अ', 'ಆ - आ', 'ಇ - इ', 'ಈ - ई', 'ಉ - उ', 'ಊ - ऊ', 'ಋ - रु', 'ಎ - ए', 'ಏ - एए', 'ಐ - ऐ', 'ಒ - ओ', 'ಓ - ओओ', 'ಔ - औ', 'ಅಂ - अं', 'ಅಃ - अः']
+	var words = ['ಅರಸ (अर अ सा) / King', 'ಆನೆ (आने) / elephant', 'ಇಲಿ (इली) / rat', 'ಈಜು (ईजू) / swim', 'ಉಗುರು (उगुरु) / nail', 'ಊಟ (ऊटा) / meal', 'ಋಷಿ (रुशी) / saint', 'ಎಲೆ (एले) / leaf', 'ಏಣಿ (ऐणी) / ladder', 'ಐದು (अइदु) / five', 'ಒಂಟೆ (ओंटी) / camel', 'ಓಡು (ओडू) / run', 'ಔಷದ (आउशधा) / medicine', '	ಅಂಗಿ (अंगी) / shirt', 'no word available for letter "ಅಃ"'];
+	var i = 0;
+	
+function ok() {
+  var x = Math.floor(Math.random() * letters.length);
+  document.getElementById('text').innerHTML = letters[x];
+  var m = words[x].replace('(', '(&nbsp;<span id="speech">');
+  m = m.replace(')', '</span>&nbsp;)')	
+  document.getElementById('words').innerHTML = m;
+  document.getElementById('btn').innerHTML = 'Next';
+	let utterance = new SpeechSynthesisUtterance(document.getElementById('speech').innerHTML);
+	utterance.lang = 'hi'
+	utterance.rate = 1
+	utterance.pitch = 10
+speechSynthesis.speak(utterance);	
+}
+</script>

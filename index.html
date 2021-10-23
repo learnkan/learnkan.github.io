@@ -1,3 +1,4 @@
+
 <!doctype html>
 <style>@import url(https://shaurya1709.github.io/vibra-UI/api.css); :root {--font: rubik, 'ballo 2', 'baloo da 2', serif; --text-case-filter: capitalize;} button {font-size: inherit !important}</style>
 <div style="position: fixed; top: 0; left: 0; height: 100vh; width: 100%; background: #fff; display: flex; justify-content: center; align-items: center;">
@@ -7,23 +8,29 @@
 	<button onclick="ok()" id="btn">start</button>
 	</div>
 </div>
-
+<audio id="0"><source src="sound/ಅ.mp3"></audio>
+<audio id="1"><source src="sound/ಆ.mp3"></audio>
+<audio id="2"><source src="sound/ಇ.mp3"></audio>
+<audio id="3"><source src="sound/ಈ.mp3"></audio>
+<audio id="4"><source src="sound/ಉ.mp3"></audio>
+<audio id="5"><source src="sound/ಊ.mp3"></audio>
+<audio id="6"><source src="sound/ಋ.mp3"></audio>
+<audio id="7"><source src="sound/ಎ.mp3"></audio>
+<audio id="8"><source src="sound/ಏ.mp3"></audio>
+<audio id="9"><source src="sound/ಐ.mp3"></audio>
+<audio id="10"><source src="sound/ಒ.mp3"></audio>
+<audio id="11"><source src="sound/ಓ.mp3"></audio>
+<audio id="12"><source src="sound/ಔ.mp3"></audio>
+<audio id="13"><source src="sound/ಅ1.mp3"></audio>
+<audio id="14"><source src="sound/ಅ2.mp3"></audio>
 <script>
-	var letters = ['ಅ - अ', 'ಆ - आ', 'ಇ - इ', 'ಈ - ई', 'ಉ - उ', 'ಊ - ऊ', 'ಋ - रु', 'ಎ - ए', 'ಏ - एए', 'ಐ - ऐ', 'ಒ - ओ', 'ಓ - ओओ', 'ಔ - औ', 'ಅಂ - अं', 'ಅಃ - अः']
-	var words = ['ಅರಸ (अर असा) / King', 'ಆನೆ (आने) / elephant', 'ಇಲಿ (इली) / rat', 'ಈಜು (ईजू) / swim', 'ಉಗುರು (उगुरु) / nail', 'ಊಟ (ऊटा) / meal', 'ಋಷಿ (रुशी) / saint', 'ಎಲೆ (एले) / leaf', 'ಏಣಿ (ऐणी) / ladder', 'ಐದು (अइदु) / five', 'ಒಂಟೆ (ओंटी) / camel', 'ಓಡು (ओडू) / run', 'ಔಷದ (आउशधा) / medicine', '	ಅಂಗಿ (अंगी) / shirt', 'no word available for letter "ಅಃ"'];
-	var i = 0;
+	var letters = ['ಅ - अ', 'ಆ - आ', 'ಇ - इ', 'ಈ - ई', 'ಉ - उ', 'ಊ - ऊ', 'ಋ - रु', 'ಎ - ए', 'ಏ - एए', 'ಐ - अइ', 'ಒ - ओ', 'ಓ - ओओ', 'ಔ - औ', 'ಅಂ - अं', 'ಅಃ - अः']
+	var words = ['ಅರಸ (अरअसा) / King', 'ಆನೆ (आने) / elephant', 'ಇಲಿ (इली) / rat', 'ಈಜು (ईजू) / swim', 'ಉಗುರು (उगुरु) / nail', 'ಊಟ (ऊटा) / meal', 'ಋಷಿ (रुशी) / saint', 'ಎಲೆ (एले) / leaf', 'ಏಣಿ (एएणी) / ladder', 'ಐದು (अइदु) / five', 'ಒಂಟೆ (ओंटी) / camel', 'ಓಡು (ओडू) / run', 'ಔಷದ (आउशधा) / medicine', 'ಅಂಗಿ (अंगी) / shirt', 'no word available for letter "ಅಃ"'];
 	
 function ok() {
   var x = Math.floor(Math.random() * letters.length);
   document.getElementById('text').innerHTML = letters[x];
-  var m = words[x].replace('(', '(&nbsp;<span id="speech">');
-  m = m.replace(')', '</span>&nbsp;)')	
-  document.getElementById('words').innerHTML = m;
-  document.getElementById('btn').innerHTML = 'Next';
-	let utterance = new SpeechSynthesisUtterance(document.getElementById('speech').innerHTML);
-	utterance.lang = 'hi'
-	utterance.rate = 1
-	utterance.pitch = 10
-speechSynthesis.speak(utterance);	
+  document.getElementById('words').innerHTML = words[x];
+  document.getElementById(x).play();
 }
 </script>
